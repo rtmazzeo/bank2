@@ -1,32 +1,37 @@
-### Sistema Bancário - Desafio Potência Tech - :brazil:
-Este repositório contém a solução desenvolvida para o Desafio Sistema Bancário em Python utilizando POO , que consiste na criação de um sistema bancário utilizando POO.
+### Sistema Bancário em Python utilizando POO - :brazil:
+Este repositório contém a solução desenvolvida para o Desafio Sistema Bancário em Python utilizando Programação Orientada a Objetos (POO). O projeto consiste na criação de um sistema bancário utilizando POO para gerenciar contas, clientes, transações e históricos.
 
 ## Descrição do Projeto
 O projeto implementa as seguintes funcionalidades:
 
-<strong>Depósito:</strong> Permite depositar valores positivos na conta bancária. A versão inicial do projeto trabalha com apenas um usuário, armazenando todos os depósitos em uma variável e exibindo-os na operação de extrato.
+<strong>Depósito:</strong> Permite depositar valores positivos na conta bancária. Agora, com a utilização de POO, os depósitos são registrados como transações em objetos específicos de cada conta. Cada depósito é armazenado no histórico da conta e pode ser visualizado na operação de extrato.
 
-<strong>Saque:</strong> O sistema permite realizar até 3 saques diários, com um limite máximo de R$ 500,00 por saque. Caso o usuário não tenha saldo suficiente, uma mensagem informa que não é possível sacar por falta de saldo. Todos os saques são armazenados em uma variável e exibidos na operação de extrato.
+<strong>Saque:</strong> O sistema permite realizar saques com as seguintes restrições:
 
-<strong>Extrato:</strong> Lista todos os depósitos e saques realizados na conta. No final da listagem, é exibido o saldo atual da conta. Se o extrato estiver em branco, a mensagem "Não foram realizadas movimentações" é exibida. Os valores são formatados no padrão RS XXXX.XX.
+- Limite diário de 3 saques.
+- Limite máximo de R$ 500,00 por saque.
+- Verificação de saldo suficiente para realizar o saque.
+
+Os saques são registrados como transações e armazenados no histórico da conta. Caso o usuário não tenha saldo suficiente ou tenha atingido o limite de saques diários, uma mensagem apropriada é exibida.
+
+<strong>Extrato:</strong> Lista todos os depósitos e saques realizados na conta, mostrando o saldo atual ao final. Se não houver movimentações, é exibida a mensagem "Não foram realizadas movimentações". Os valores são formatados no padrão R$ XXXX.XX.
 
 ## Código Desenvolvido
-O código está estruturado em funções para cada operação e possui uma interface de linha de comando simples. A biblioteca Rich é utilizada para imprimir mensagens formatadas, tornando a interação mais amigável.
+O código está estruturado em classes que representam os principais componentes do sistema bancário:
 
----
----
+## Classes Principais
+<strong>Cliente:</strong> Representa um cliente do banco, podendo possuir múltiplas contas.
 
-### Banking System - Potência Tech Challenge - 🇺🇸
-This repository contains the solution developed for Challenge 01 of the "Potência Tech powered by iFood | Data Science" bootcamp, which involves creating a basic banking system with the operations of withdrawing, depositing, and viewing the statement.
+<strong>PessoaFisica:</strong> Subclasse de Cliente, inclui atributos como CPF, nome e data de nascimento.
 
-## Project Description
-The project implements the following functionalities:
+<strong>Conta:</strong> Classe base para contas bancárias, com métodos para depósito e saque.
 
-<strong>Deposit:</strong> Allows depositing positive values into the bank account. The initial version of the project works with only one user, storing all deposits in a variable and displaying them in the statement operation.
+<strong>ContaCorrente:</strong> Subclasse de Conta, adiciona limite de crédito e controle de saques diários.
 
-<strong>Withdrawal:</strong> The system allows up to 3 daily withdrawals, with a maximum limit of R$ 500.00 per withdrawal. If the user does not have enough balance, a message informs that it is not possible to withdraw due to insufficient funds. All withdrawals are stored in a variable and displayed in the statement operation.
+<strong>Historico:</strong> Armazena o histórico de transações de uma conta.
 
-<strong>Statement:</strong> Lists all deposits and withdrawals made in the account. At the end of the listing, the current account balance is displayed. If the statement is blank, the message "No transactions were made" is shown. Values are formatted in the RS XXXX.XX pattern.
+<strong>Transacao:</strong> Classe abstrata para representar transações bancárias.
 
-## Developed Code
-The code is structured into functions for each operation and has a simple command-line interface. The Rich library is used to print formatted messages, making the interaction more user-friendly.
+<strong>Deposito:</strong> Subclasse de Transacao, representa um depósito.
+
+<strong>Saque:</strong> Subclasse de Transacao, representa um saque.
